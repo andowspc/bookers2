@@ -12,7 +12,8 @@ class BooksController < ApplicationController
     #paramsとは送られてきたデータを受け取るメソッド
     @new = Book.new
     @user = @book.user
-    #@bookのユーザーの***********。
+    #@bookのユーザーの***********
+    @book_comment = BookComment.new
   end
 
   def create

@@ -47,6 +47,8 @@
           <th>&nbsp;&nbsp;&nbsp;</th>
           <th>Title</th>
           <th>Opinion</th>
+          <th>いいね</th>
+          <th>コメント</th>
         </tr>
       </thead>
       <tbody>
@@ -63,6 +65,14 @@
           <td>
             <%= book.body %>
           </td>
+          <td>
+            <% if book.favorited_by?(current_user) %>
+              <%= link_to book.favorites.count, book_favorites_path(book), method: :delete, class: "fas fa-heart heart_red" %>
+            <% else %>
+              <%= link_to book.favorites.count, book_favorites_path(book), method: :post, class: "fas fa-heart heart_blue" %>
+            <% end %>
+          </td>
+          <td>コメント数: <%= book.book_comments.count %></td>
         </tr>
       <% end %>
       </tbody>
