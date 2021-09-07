@@ -9,32 +9,10 @@
   <div class="row">
     <div class="col-md-3">
 
-    <h2>Use info</h2>
-
-    <table class="table table-striped">
-
-      <tr>
-        <th><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "noimage.jpg" %></th>
-      </tr>
-
-      <tr><th>name</th><td><%= @user.name %></td></tr>
-
-      <tr><th>introduction</th><td><%= @user.introduction %></td></tr>
-
-    </table>
-
-    <%= link_to '', edit_user_path(@user), class: "btn btn-outline-secondary btn-block  fas fa-user-cog" %>
-
+    <%= render 'users/profile', user: @user %>
+  
     <!--######################################################-->
     <%= render 'books/list', books: @new %>
-    <!--<h2>New book</h2>-->
-    <!--%= form_with model:@new, url: books_path, local:true do |f| %>-->
-    <!--<h4>Title</h4>-->
-    <!--%= f.text_field :title %>-->
-    <!--<h4>Opinion</h4>-->
-    <!--%= f.text_field :body %>-->
-    <!--%= f.submit 'Create Book' %>-->
-    <!--% end %>-->
     </div>
     <!--######################################################-->
 
@@ -47,8 +25,8 @@
           <th>&nbsp;&nbsp;&nbsp;</th>
           <th>Title</th>
           <th>Opinion</th>
-          <th>いいね</th>
-          <th>コメント</th>
+          <th>Like</th>
+          <th>Comment</th>
         </tr>
       </thead>
       <tbody>
@@ -72,7 +50,7 @@
               <%= link_to book.favorites.count, book_favorites_path(book), method: :post, class: "fas fa-heart heart_blue" %>
             <% end %>
           </td>
-          <td>コメント数: <%= book.book_comments.count %></td>
+          <td>Comments: <%= book.book_comments.count %></td>
         </tr>
       <% end %>
       </tbody>
@@ -80,15 +58,3 @@
     </div>
   </div>
 </div>
-
-
-
-<footer>
-  <div class="container mt-5">
-  	<div class="row">
-    	<div class="mx-auto">
-    		<p>CopyRight Infratop.inc</p>
-    	</div>
-    </div>
-  </div>
-</footer>
