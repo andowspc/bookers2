@@ -32,6 +32,14 @@
         </div>
       </nav>
     </header>
+    
+    <main>
+      <% if user_signed_in? %>
+        <%= render 'layouts/search' %>
+      <% end %>
+        <p id="notice"><%= notice %></p>
+    </main>
+    
   </body>
 
   <% else %>
@@ -55,9 +63,11 @@
       </nav>
     </header>
   </body>
-
   <% end %>
+  
   <%= yield %>
+
+<!--***************************************-->
 
     <footer>
       <div class="container mt-5">
